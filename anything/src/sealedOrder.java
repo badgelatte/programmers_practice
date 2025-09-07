@@ -19,30 +19,22 @@ public class sealedOrder {
         // -> baa - baz : 26 + bba - bbz : 26 ... - bzz = 26 ^ 2
         // -> aaa - zzz : 26 ^ 3
 
-        long[] nums = new long[bans.length];
+        long[] banNums = new long[bans.length];
+        Arrays.sort(bans);
 
         // bans -> long로 변형
-        for(int i = 0; i < bans.length; i++) {
-            System.out.println(i+1 + ": " + bans[i]);
-            nums[i] = strToLong(bans[i]);
+        for (int i = 0; i < bans.length; i++) {
+            banNums[i] = strToLong(bans[i]);
         }
-        Arrays.sort(nums);
-        System.out.println();
 
-        // 검수
-        int nss = 0;
-        for(int i = 0; i < nums.length; i++) {
-            System.out.println("n: " + n + " > num["+i+"]: "+nums[i]);
-            if(n > nums[i]) {
+        // 주문 지우기
+        for (long num : banNums) {
+            if (n > num) {
                 n++;
             }
-            System.out.println("n: " + n);
         }
-        // jxk
-//        n += nss;
 
         // n -> string으로 변경
-
         return longToStr(n);
     }
 
@@ -50,10 +42,8 @@ public class sealedOrder {
         char[] letters = str.toCharArray();
         long result = 0;
 
-        System.out.print(str);
         for(int i = 0; i < letters.length; i++) {
             result += (letters[letters.length - 1 - i] - 96) * (long) (Math.pow(26, i));
-            System.out.println(": " + result);
         }
 
         return result;
@@ -62,17 +52,12 @@ public class sealedOrder {
     public static String longToStr(long num) {
         int length = 1;
         int count = 0;
-        String str = "";
-
-        System.out.println("num: " + num);
 
         // 총 길이 확인
-        while((int)Math.pow(26, length++) > num) {
+        while((int)Math.pow(26, length++) < num) {
         }
 
-        System.out.println("length: " + length);
-
-        char[] letters = new char[length];
+        char[] letters = new char[--length];
 
         // 바꾸기
         while (length-- > 0) {
@@ -82,23 +67,31 @@ public class sealedOrder {
                 a /= 26;
                 count++;
             }
-            System.out.println("a: " + a);
 
             letters[length] = (char)(a + 96);
             num -= a * (long) Math.pow(26,count);
-            System.out.println("num: "+num);
         }
 
-        System.out.print("[");
-        for (int i = 0; i < letters.length; i++) {
-            System.out.print(" " + letters[i]);
-        }
-        System.out.println("]");
+        print(letters);
 
-        for(int i = letters.length - 1; i >= 0; i--) {
-            str += letters[i];
+        return addChar(letters);
+    }
+
+    public static String addChar(char[] arr) {
+        String str = "";
+
+        for(int i = arr.length - 1; i >= 0; i--) {
+            str += arr[i];
         }
 
         return str;
+    }
+
+    public static void print(char[] arr) {
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(" " + arr[i]);
+        }
+        System.out.println("]");
     }
 }
