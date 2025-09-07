@@ -12,7 +12,6 @@ public class sealedOrder {
     }
 
     public static String solution(long n, String[] bans) {
-        String answer = "";
         // a - z : 26
         // aa - az : 26 + ba - bz : 26 ... za - zz = 26 ^ 2
         // aaa - aaz : 26 + aba - abz : 26 + ... - azz = 26 ^ 2 +
@@ -20,16 +19,16 @@ public class sealedOrder {
         // -> aaa - zzz : 26 ^ 3
 
         long[] banNums = new long[bans.length];
-        Arrays.sort(bans);
 
         // bans -> long로 변형
         for (int i = 0; i < bans.length; i++) {
             banNums[i] = strToLong(bans[i]);
         }
+        Arrays.sort(banNums);
 
         // 주문 지우기
         for (long num : banNums) {
-            if (n > num) {
+            if (n >= num) {
                 n++;
             }
         }
