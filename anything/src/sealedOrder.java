@@ -1,5 +1,6 @@
 import java.util.Arrays;
 
+// programmers lv3 봉인된 주문
 public class sealedOrder {
 
     public static void main(String[] args) {
@@ -49,25 +50,33 @@ public class sealedOrder {
     }
 
     public static String longToStr(long num) {
-        int length = 1;
+        int length = 0;
         int count = 0;
 
-        // 총 길이 확인
-        while((int)Math.pow(26, length++) < num) {
+        // str 총 길이 확인
+//        while((int)Math.pow(26, length++) < num) {
+//        }
+        long num2 = num;
+        while(0 < num2) {
+            num2 /= 26;
+            length++;
         }
 
-        char[] letters = new char[--length];
+        char[] letters = new char[length];
 
-        // 바꾸기
-        while (length-- > 0) {
+        // 숫자에서 글자(아스키코드)로 치환
+//        while (length-- > 0) {
+        for (int i = length; i > 0; i--) {
             long a = num;
-            count=0;
-            for(int i = 0; i < length; i++) {
+            count = 0;
+
+            for(int j = 0; j < i - 1; j++) {
                 a /= 26;
                 count++;
             }
+            System.out.println(a);
 
-            letters[length] = (char)(a + 96);
+            letters[i - 1] = (char)(a + 96);
             num -= a * (long) Math.pow(26,count);
         }
 
