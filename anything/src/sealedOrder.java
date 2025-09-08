@@ -4,12 +4,15 @@ import java.util.Arrays;
 public class sealedOrder {
 
     public static void main(String[] args) {
-//        String[] strs = new String[]{"d","e","bb","aa","ae"};
-//        String str = solution(30, strs);
+        String[] strs = new String[]{"d","e","bb","aa","ae"};
+        String str = solution(30, strs);
 
-        String[] strs = new String[] {"gqk", "kdn", "jxj", "jxi", "fug", "jxg", "ewq", "len", "bhc"};
-        String str = solution(7388, strs);
-        System.out.println(str);
+        String[] strs2 = new String[] {"gqk", "kdn", "jxj", "jxi", "fug", "jxg", "ewq", "len", "bhc"};
+        String str2 = solution(7388, strs);
+
+        String[] strs3 = new String[] {"abc"};
+        String str3 = solution(52, strs3);
+        System.out.println(str3);
     }
 
     public static String solution(long n, String[] bans) {
@@ -52,11 +55,11 @@ public class sealedOrder {
     public static String longToStr(long num) {
         int length = 0;
         int count = 0;
+        boolean flag = false;
 
         // str 총 길이 확인
-//        while((int)Math.pow(26, length++) < num) {
-//        }
         long num2 = num;
+
         while(0 < num2) {
             num2 /= 26;
             length++;
@@ -65,19 +68,35 @@ public class sealedOrder {
         char[] letters = new char[length];
 
         // 숫자에서 글자(아스키코드)로 치환
-//        while (length-- > 0) {
+        num2 = num;
+
+        while(num2 > 0){
+            if(num2 % 26 == 0) {
+                flag = true;
+            }
+            num2 /= 26;
+        }
+
+        if(flag) {
+            num -= 1;
+        }
+
+        // 숫자에서 글자(아스키코드)로 치환
         for (int i = length; i > 0; i--) {
-            long a = num;
+            num2 = num;
             count = 0;
 
             for(int j = 0; j < i - 1; j++) {
-                a /= 26;
+                num2 /= 26;
                 count++;
             }
-            System.out.println(a);
 
-            letters[i - 1] = (char)(a + 96);
-            num -= a * (long) Math.pow(26,count);
+            if(count == 0 && flag) {
+                num2++;
+            }
+
+            letters[i - 1] = (char)(num2 + 96);
+            num -= num2 * (long) Math.pow(26,count);
         }
 
         print(letters);
