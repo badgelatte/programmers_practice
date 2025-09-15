@@ -16,9 +16,13 @@ public class sealedOrder {
         String[] strs3 = new String[] {"abc"};
         String str3 = solution(26, strs3);
 
-        // zz
+        // az
         String[] strs4 = new String[] {"aaa"};
-        String str4 = solution(702, strs4);
+        String str4 = solution(52, strs4);
+
+        // zz
+        String[] strs5 = new String[] {"aaa"};
+        String str5 = solution(702, strs4);
     }
 
     public static String solution(long n, String[] bans) {
@@ -91,7 +95,7 @@ public class sealedOrder {
         // z 글자로 인한 오류 정정 구간
         for(int i = 0; i < letters.length - 1; i++) {
             if(letters[i] - 'a' < 0) {
-                letters[i + 1] = (char) (letters[i + 1] - 'a');
+                letters[i + 1] = (char) (letters[i + 1] - 'a' + 96);
                 letters[i] = 'z';
             }
         }
