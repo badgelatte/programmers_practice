@@ -4,15 +4,21 @@ import java.util.Arrays;
 public class sealedOrder {
 
     public static void main(String[] args) {
+        // ah
         String[] strs = new String[]{"d","e","bb","aa","ae"};
         String str = solution(30, strs);
 
+         // jxk
         String[] strs2 = new String[] {"gqk", "kdn", "jxj", "jxi", "fug", "jxg", "ewq", "len", "bhc"};
-        String str2 = solution(7388, strs);
+        String str2 = solution(7388, strs2);
 
+        // z
         String[] strs3 = new String[] {"abc"};
-        String str3 = solution(52, strs3);
-        System.out.println(str3);
+        String str3 = solution(26, strs3);
+
+        // zz
+        String[] strs4 = new String[] {"aaa"};
+        String str4 = solution(702, strs4);
     }
 
     public static String solution(long n, String[] bans) {
@@ -24,10 +30,11 @@ public class sealedOrder {
 
         long[] banNums = new long[bans.length];
 
-        // bans -> long로 변형
+        // bans; string -> long로 변형
         for (int i = 0; i < bans.length; i++) {
             banNums[i] = strToLong(bans[i]);
         }
+
         Arrays.sort(banNums);
 
         // 주문 지우기
@@ -55,7 +62,6 @@ public class sealedOrder {
     public static String longToStr(long num) {
         int length = 0;
         int count = 0;
-        boolean flag = false;
 
         // str 총 길이 확인
         long num2 = num;
@@ -68,35 +74,30 @@ public class sealedOrder {
         char[] letters = new char[length];
 
         // 숫자에서 글자(아스키코드)로 치환
-        num2 = num;
-
-        while(num2 > 0){
-            if(num2 % 26 == 0) {
-                flag = true;
-            }
-            num2 /= 26;
-        }
-
-        if(flag) {
-            num -= 1;
-        }
-
-        // 숫자에서 글자(아스키코드)로 치환
-        for (int i = length; i > 0; i--) {
+        for (int i = letters.length; i > 0; i--) {
             num2 = num;
             count = 0;
+            length--;
 
-            for(int j = 0; j < i - 1; j++) {
+            while(length > count) {
                 num2 /= 26;
                 count++;
             }
 
-            if(count == 0 && flag) {
-                num2++;
-            }
+            letters[i - 1] = (char) (num2 + 96);
+            num -= num2 * (long) Math.pow(26, count);
+        }
 
-            letters[i - 1] = (char)(num2 + 96);
-            num -= num2 * (long) Math.pow(26,count);
+        // z 글자로 인한 오류 정정 구간
+        for(int i = 0; i < letters.length - 1; i++) {
+            if(letters[i] - 'a' < 0) {
+                letters[i + 1] = (char) (letters[i + 1] - 'a');
+                letters[i] = 'z';
+            }
+        }
+
+        if(letters[letters.length - 1] - 'a' < 0) {
+            letters = Arrays.copyOf(letters, letters.length - 1);
         }
 
         print(letters);
@@ -116,9 +117,11 @@ public class sealedOrder {
 
     public static void print(char[] arr) {
         System.out.print("[");
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(" " + arr[i]);
+
+        for (char c : arr) {
+            System.out.print(" " + c);
         }
+
         System.out.println("]");
     }
 }
