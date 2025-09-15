@@ -3,7 +3,7 @@ import java.util.Set;
 
 // 이거 그지 같네.. 몇시간동안 한거더라..? 2?
 // 주제 : 한 사람당의 평균을 구하여 랭킹 맺기기
-class tq {
+class getRank {
     public static void main(String[] args) {
         int[] rseult = solution(new int[][]{{80, 70}, {70, 80}, {30, 50}, {90, 100}, {100, 90}, {100, 100}, {10, 30}});
 
