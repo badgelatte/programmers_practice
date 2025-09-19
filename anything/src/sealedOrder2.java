@@ -65,8 +65,14 @@ public class sealedOrder2 {
     // l to string
     public static String longToStr(long num) {
         long num2 = num;
-        long n = 0;
+        int length = 0;
 
+        while(0 < num2) {
+            num2 /= 26;
+            length++;
+        }
+
+        char[] letters = new char[length];
 
 //        print(num);
 
