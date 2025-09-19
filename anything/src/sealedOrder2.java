@@ -23,6 +23,10 @@ public class sealedOrder2 {
         // zz
         String[] strs5 = new String[] {"aaa"};
         String str5 = solution(702, strs4);
+
+        // azc
+        String[] strs6 = new String[] {"aaaa"};
+        String str6 = solution(1355, strs4);
     }
 
     public static String solution(long n, String[] bans) {
@@ -74,10 +78,16 @@ public class sealedOrder2 {
 
         char[] letters = new char[length];
 
-//        print(num);
+        for(int i = 0; i < length; i++) {
+            num2 = num % 26;
+            num /= 26;
 
-//        return addChar(num);
-        return num +"";
+            letters[length - 1 - i] = (char) (num2 + 96);
+        }
+
+        print(letters);
+
+        return addChar(letters);
     }
 
     public static String addChar(char[] arr) {
