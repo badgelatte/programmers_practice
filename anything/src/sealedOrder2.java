@@ -97,6 +97,12 @@ public class sealedOrder2 {
             num2 = num % 26;
             num /= 26;
 
+            // 나머지가 0으로 나온다면 이는 26을 의미하며 z를 쓰도록 변환해주는 코드
+            if(num2 == 0) {
+                num2 = 26;
+                num--;
+            }
+
             letters[length - 1 - i] = (char) (num2 + 96);
         }
 
