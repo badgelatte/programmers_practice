@@ -79,6 +79,18 @@ public class sealedOrder2 {
             length++;
         }
 
+        // 26 제곱근 다 더한 것과 num 비교하여 같을 경우 length - 1
+        long sum = 0;
+        int count = 0;
+
+        while(sum < num) {
+            sum += (long) (Math.pow(26, count++) * 26);
+        }
+
+        if(num == sum) {
+            length--;
+        }
+
         char[] letters = new char[length];
 
         for(int i = 0; i < length; i++) {
