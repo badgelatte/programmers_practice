@@ -15,18 +15,21 @@ public class sealedOrder2 {
         String[] strs3 = new String[] {"abc"};
         String str3 = solution(26, strs3);
 
-
         // az
         String[] strs4 = new String[] {"aaa"};
-        String str4 = solution(702, strs4);
+        String str4 = solution(52, strs4);
 
         // zz
         String[] strs5 = new String[] {"aaa"};
-        String str5 = solution(702, strs4);
+        String str5 = solution(702, strs5);
 
         // azc
         String[] strs6 = new String[] {"aaaa"};
-        String str6 = solution(1355, strs4);
+        String str6 = solution(1355, strs6);
+
+        // bz
+        String[] strs7 = new String[] {"aaa"};
+        String str7 = solution(78, strs7);
     }
 
     public static String solution(long n, String[] bans) {
