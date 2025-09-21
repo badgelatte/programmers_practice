@@ -22,7 +22,7 @@ public class sealedOrder {
 
         // zz
         String[] strs5 = new String[] {"aaa"};
-        String str5 = solution(702, strs4);
+        String str5 = solution(702, strs5);
     }
 
     public static String solution(long n, String[] bans) {
