@@ -1,9 +1,5 @@
 public class asfafa {
-    public static void main(String[] args) {
-        Berry c = new Berry();
-        c.str = "e";
-        c.print();
-    }
+    
 }
 class Berry{
     protected String str;
