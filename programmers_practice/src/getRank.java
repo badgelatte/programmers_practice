@@ -1,7 +1,6 @@
 import java.util.HashSet;
 import java.util.Set;
 
-// 이거 그지 같네.. 몇시간동안 한거더라..? 2?
 // 주제 : 한 사람당의 평균을 구하여 랭킹 맺기기
 class getRank {
     public static void main(String[] args) {

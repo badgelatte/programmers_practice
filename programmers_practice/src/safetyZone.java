@@ -12,7 +12,7 @@ class Pair{
 
 }
 
-class aa {
+class safetyZone {
     public static void main(String[] args) {
         // solution2(new int[][]{{0, 0, 0, 0, 0}, {0, 1, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 1, 0, 0}, {0, 0, 0, 0, 0}});
         solution(new int[][]{{1}});

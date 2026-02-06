@@ -1,4 +1,5 @@
-public class aaa {
+public class strContainsChecker {
+    
     public static void main(String[] args) {
         System.out.println(solution("Banana", "ana"));
     }
@@ -18,6 +19,7 @@ public class aaa {
         return 0;
     }
 }
+
 class Parent{
     static int total = 0;
     int v = 1;
