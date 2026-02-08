@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class mockTest {
     public static void main(String[] args) {
         int[] answers1 = new int[]{1,2,3,4,5};
         int[] answers2 = new int[]{1,3,2,4,2};
-        int[] result = solution(answers2);
+        int[] result = solution(answers1);
 
         System.out.print("[");
         for (int num : result) {
@@ -46,32 +50,23 @@ public class mockTest {
     }
 
     public static int[] findTopScore(int[] arr) {
-        String topScore = 1 + ",";
-        int top = arr[0];
+        List<Integer> list = new ArrayList<>();
 
-        for(int i = 1; i < arr.length; i++) {
-            if(top < arr[i]) {
-                topScore = (i + 1) + ",";
-            }
-            else if(top == arr[i]) {
-                topScore += (i + 1 + ",");
+        int[] arrSort = arr.clone();
+        Arrays.sort(arrSort);
+
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i] == arrSort[arrSort.length - 1]) {
+                list.add(i + 1);
             }
         }
 
-        return strToIntArr(topScore);
-    }
+        int[] topScore = new int[list.size()];
 
-    public static int[] strToIntArr(String str) {
-        String[] strArr = str.split(",");
-        int[] intArr = new int[strArr.length];
-        System.out.println(str);
-
-        for (int i = 0; i < intArr.length; i++) {
-            intArr[i] = Integer.parseInt(strArr[i]);
+        for(int i = 0; i < list.size(); i++) {
+            topScore[i] = list.get(i);
         }
 
-        return intArr;
+        return topScore;
     }
-
-
 }
